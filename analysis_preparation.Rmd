@@ -1,0 +1,63 @@
+#분석 전 사전 작업
+```{r}
+#사용한 R패키지
+library(Seurat)
+library(Matrix)
+library(ggplot2)
+library(ggpubr)
+library(patchwork)
+library(dplyr)
+library(plyr)
+library(SeuratData)
+library(cowplot)
+library(harmony)
+library(presto)
+library(dittoSeq)
+#library(multtest)
+library(tidyr)
+library(corrplot)
+
+#서버안에서 파일 경로
+setwd("~/YMJ/Cseq/228a")
+```
+
+```{r}
+#사용된 R color palette
+library(RColorBrewer)
+display.brewer.all()
+c1 =brewer.pal(n = 8, name = "Set1")
+c2 =brewer.pal(n = 8, name = "Dark2")
+c3 =brewer.pal(n = 8, name = "Paired")
+c4 =brewer.pal(n = 8, name = "Accent")
+
+Cols = c(c1,c2, c3, c4)
+```
+
+```{r}
+# single cell expression 파일 불러오기 (seurat object 이전단계)
+barcode_file <- "~/YMJ/Cseq/228a/3P_RNA/barcodes.tsv.gz"
+feature_file <- "~/YMJ/Cseq/228a/3P_RNA/features.tsv.gz"
+matrix_file <- "~/YMJ/Cseq/228a/3P_RNA/matrix.mtx.gz"
+data <- Read10X(data.dir = "~/YMJ/Cseq/228a/3P_RNA")
+
+
+barcode_file <- "~/YMJ/Cseq/228a/3P_ADT/barcodes.tsv.gz"
+feature_file <- "~/YMJ/Cseq/228a/3P_ADT/features.tsv.gz"
+matrix_file <- "~/YMJ/Cseq/228a/3P_ADT/matrix.mtx.gz"
+adata <- Read10X(data.dir = "~/YMJ/Cseq/228a/3P_ADT")
+
+all.equal(colnames(data), colnames(adata), colnales(bdata))
+```
+
+
+```{r}
+#seurat object 생성
+jata <- CreateSeuratObject(counts = data, project = "3P-RNA", min.cells = 200, min.features = 500)
+adt_assay <- CreateAssayObject(counts = adata)
+jata[["ADT"]] <- adt_assay #단백질 발현 데이터 추가
+Assays(jata)
+rownames(jata[["ADT"]])
+mdata <- read.csv(file = "~/YMJ/Cseq/228a/GSE164378_sc.meta.data_3P.csv.gz", row.names = 1)
+jata <- AddMetaData(jata, metadata = mdata)
+DefaultAssay(jata)
+```
