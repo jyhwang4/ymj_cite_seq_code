@@ -13,6 +13,7 @@ plot1 <- FeatureScatter(jata, feature1 = "nCount_RNA", feature2 = "percent.mt", 
 plot2 <- FeatureScatter(jata, feature1 = "nCount_RNA", feature2 = "nFeature_RNA", group.by = "orig.ident")
 plot1 + plot2
 ```
+![image](https://github.com/jyhwang4/ymj_cite_seq_code/assets/59998490/df1f856a-082d-42bc-9d87-fcad72e365e3)
 
 ```{r}
 jata <- subset(jata, subset = nFeature_RNA < 5000 & nCount_RNA < 30000 & percent.mt < 17)
