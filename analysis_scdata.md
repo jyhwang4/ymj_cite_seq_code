@@ -54,7 +54,7 @@ DimPlot(jata, reduction = "rna.umap", label = T, repel=T, group.by = "celltype.l
 DimPlot(jata, reduction = "rna.umap", label = T, repel=T, group.by = "celltype.l1", cols=Cols) + NoLegend()
 ```
 ![image](https://github.com/user-attachments/assets/3befb319-82e7-42ce-bd79-d7a1b9377510)
-
+Azimuth cell annotation
 ![image](https://github.com/user-attachments/assets/7aac1d5a-4881-4ef5-83fd-da8c72fb0bf5)
 
 ![image](https://github.com/user-attachments/assets/b55c73d0-9cb1-4db2-bde5-37cfcafd487f)
