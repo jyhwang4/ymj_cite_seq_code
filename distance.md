@@ -28,6 +28,7 @@ cat("Protein Centroid distance between CD8 Naive and CD8 TEM:", centroid_distanc
 
 ```
 mRNA Centroid distance between CD8 Naive and CD8 TEM: 12.26637 
+
 Protein Centroid distance between CD8 Naive and CD8 TEM: 3.528299 
 
 ```{r}
@@ -56,6 +57,7 @@ centroid_distance <- sqrt(sum((centroid_CD8_Naive - centroid_CD8_TEM)^2))
 cat("Protein Centroid distance between CD4 Naive and CD4 TEM:", centroid_distance, "\n")
 ```
 mRNA Centroid distance between CD4 Naive and CD4 TEM: 6.299101 
+
 Protein Centroid distance between CD4 Naive and CD4 TEM: 3.303466 
 
 ```{r}
